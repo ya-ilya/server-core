@@ -1,0 +1,15 @@
+discord-invite: discord.gg/invite
+antiIllegals:
+   removeIllegalEnchantaments: true
+   removeOverStackedItems: true
+   removeIllegalPotions: true
+   inventoryOpenEvent: true
+   inventoryCloseEvent: true
+   removeIllegalItems: true
+   blockPlaceEvent: true
+   pickupItemEvent: true
+   PotionSplashEvent: true
+   bowEvent: true
+   maxItemDamage: 36
+   maxPotionLevel: 5
+   maxBowDamage: 36

@@ -1,0 +1,25 @@
+name: ServerCore
+main: com.ilya.core.Main
+version: 1.0
+authors: [ya-ilya]
+commands:
+   discord:
+      description: Tells the player invite to discord server
+   stats:
+      description: Tells the player world size and how many players played on the server
+   message:
+      description: Sends a private message to the specified player.
+      aliases: [msg, w, message, tell, t, pm]
+   reply:
+      description: Quickly reply to the last player to message you.
+      aliases: [r, reply]
+   ignore:
+      description: Ignore or unignore other players.
+   ignorelist:
+      description: Tells the player a list of players he ignores
+   uptime:
+      description: Tells the player how much time has passed without restarting the server
+   ping:
+      description: Tells you ping of the specified player
+   bed:
+      description: Tells you your bed location
