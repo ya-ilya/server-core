@@ -1,5 +1,8 @@
 package com.ilya.core.events;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -26,5 +29,13 @@ public class EventPlayerJoinLeave implements Listener {
         Player p = event.getPlayer();
         String leftMessage = Main.getInstance().getConfig().getString("leftMessage").replaceAll("%player%", p.getName());
         event.setQuitMessage(ChatColor.GRAY + leftMessage);
+        if (Main.playerManager.getConfig().getString("players." + p.getName() + ".joindate") != null) {
+        	
+        }else {
+        	SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
+        	Date date = new Date(System.currentTimeMillis());
+        	Main.playerManager.getConfig().set("players." + p.getName() + ".joindate", formatter.format(date));
+        	Main.playerManager.saveConfig();
+        }
     }
 }

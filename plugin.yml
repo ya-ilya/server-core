@@ -4,9 +4,9 @@ version: 1.0
 authors: [ya-ilya]
 commands:
    discord:
-      description: Tells the player invite to discord server
+      description: Tells you an invite to discord server
    stats:
-      description: Tells the player world size and how many players played on the server
+      description: Tells you the world size, and the number of players joined on to the server
    message:
       description: Sends a private message to the specified player.
       aliases: [msg, w, message, tell, t, pm]
@@ -16,10 +16,13 @@ commands:
    ignore:
       description: Ignore or unignore other players.
    ignorelist:
-      description: Tells the player a list of players he ignores
+      description: tells you the list of players you ignore
    uptime:
-      description: Tells the player how much time has passed without restarting the server
+      description: Tells you how much time has passed without restarting the server
    ping:
       description: Tells you ping of the specified player
    bed:
       description: Tells you your bed location
+   joindate:
+      description: Tells you player join date
+      aliases: [joindate, jd]

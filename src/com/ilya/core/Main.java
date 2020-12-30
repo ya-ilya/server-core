@@ -11,6 +11,7 @@ import com.ilya.core.commands.Bed;
 import com.ilya.core.commands.Discord;
 import com.ilya.core.commands.Ignore;
 import com.ilya.core.commands.IgnoreList;
+import com.ilya.core.commands.JoinDate;
 import com.ilya.core.commands.Message;
 import com.ilya.core.commands.Ping;
 import com.ilya.core.commands.Reply;
@@ -23,13 +24,16 @@ import com.ilya.core.events.EventPlayerInventory;
 import com.ilya.core.events.EventPlayerJoinLeave;
 import com.ilya.core.managers.IgnoreManager;
 import com.ilya.core.managers.MessageManager;
+import com.ilya.core.managers.PlayerManager;
 
 public class Main extends JavaPlugin implements CommandExecutor, Listener {
 	public static long startTime;
 	private static Main instance;
 	public static MessageManager messageManager;
 	public static IgnoreManager ignoreManager;
+	public static PlayerManager playerManager;
 	File ignorefile = new File(getDataFolder() + File.separator + "ignore.yml");
+	File joindatesfile = new File(getDataFolder() + File.separator + "joindates.yml");
 	public static Main getInstance(){
 		return instance;
 	}
@@ -38,6 +42,7 @@ public class Main extends JavaPlugin implements CommandExecutor, Listener {
 	public void onEnable() {
 		messageManager = new MessageManager(this);
 		ignoreManager = new IgnoreManager(this);
+		playerManager = new PlayerManager(this);
 		
 		instance = this;
 		
@@ -57,6 +62,7 @@ public class Main extends JavaPlugin implements CommandExecutor, Listener {
 		getCommand("uptime").setExecutor(new Uptime(this));
 		getCommand("ping").setExecutor(new Ping(this));
 		getCommand("bed").setExecutor(new Bed(this));
+		getCommand("joindate").setExecutor(new JoinDate(this));
 		
 		new EventPlayerJoinLeave(this);
 		new EventPlayerChat(this);
@@ -72,6 +78,14 @@ public class Main extends JavaPlugin implements CommandExecutor, Listener {
 			}
 		}
 		
+		if (!joindatesfile.exists()) {
+			try {
+				joindatesfile.createNewFile();
+			}catch(IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
 		startTime = System.currentTimeMillis();
 		getLogger().info("ServerCore enabled!");
 	}
@@ -82,5 +96,9 @@ public class Main extends JavaPlugin implements CommandExecutor, Listener {
 	
 	public File getIgnoreFile() {
 		return ignorefile;
+	}
+	
+	public File getJoinDatesFile() {
+		return joindatesfile;
 	}
 }
