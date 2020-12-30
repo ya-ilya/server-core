@@ -22,7 +22,7 @@ public class IgnoreList implements CommandExecutor {
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		if (sender instanceof Player) {
-			List<String> ignorelist = Main.ignoringManager.getConfig().getStringList("players." + sender.getName() + ".ignoring");
+			List<String> ignorelist = Main.ignoreManager.getConfig().getStringList("players." + sender.getName() + ".ignoring");
 			if (ignorelist.toString().length() > 0) {
 				String message = "";
 				for (String s : ignorelist) {

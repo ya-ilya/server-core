@@ -31,7 +31,7 @@ public class Message implements CommandExecutor {
 					message += s + " ";
 				}
 				sender.sendMessage(ChatColor.LIGHT_PURPLE + "To " + player2.getName() + ":" + message);
-				List<String> ignoring = Main.ignoringManager.getConfig().getStringList("players." + player2.getName() + ".ignoring");
+				List<String> ignoring = Main.ignoreManager.getConfig().getStringList("players." + player2.getName() + ".ignoring");
 				if (ignoring.contains(sender.getName())) {
 					sender.sendMessage(ChatColor.RED + sender.getName() + " ignores you, the message was not delivered");
 					return true;

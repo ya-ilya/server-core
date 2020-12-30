@@ -11,11 +11,11 @@ import org.bukkit.entity.Player;
 
 import com.ilya.core.Main;
 
-public class IgnoringManager {
+public class IgnoreManager {
 	Main core;
 	FileConfiguration file;
 	
-	public IgnoringManager(Main core) {
+	public IgnoreManager(Main core) {
 		File ignorefile = new File(core.getDataFolder() + File.separator + "ignore.yml");
 		file = YamlConfiguration.loadConfiguration(ignorefile);;
 		this.core = core;

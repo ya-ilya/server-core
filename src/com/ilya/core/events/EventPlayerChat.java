@@ -24,8 +24,8 @@ public class EventPlayerChat implements Listener {
 	public void onPlayerChat(AsyncPlayerChatEvent event) {
 		Player sender = event.getPlayer();
 		for (Player p : Main.getInstance().getServer().getOnlinePlayers()) {
-			if (Main.ignoringManager.getConfig().getStringList("players." + p.getName() + ".ignoring") == null) continue;
-			List<String> ignorelist = Main.ignoringManager.getConfig().getStringList("players." + p.getName() + ".ignoring");
+			if (Main.ignoreManager.getConfig().getStringList("players." + p.getName() + ".ignoring") == null) continue;
+			List<String> ignorelist = Main.ignoreManager.getConfig().getStringList("players." + p.getName() + ".ignoring");
 			for (int n = 0; n < ignorelist.size(); ++n) {
                 String ignored = ignorelist.get(n);
                 if (!ignored.equalsIgnoreCase(sender.getName())) continue;

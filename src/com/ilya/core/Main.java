@@ -21,14 +21,14 @@ import com.ilya.core.events.EventEntityHit;
 import com.ilya.core.events.EventPlayerChat;
 import com.ilya.core.events.EventPlayerInventory;
 import com.ilya.core.events.EventPlayerJoinLeave;
-import com.ilya.core.managers.IgnoringManager;
+import com.ilya.core.managers.IgnoreManager;
 import com.ilya.core.managers.MessageManager;
 
 public class Main extends JavaPlugin implements CommandExecutor, Listener {
 	public static long startTime;
 	private static Main instance;
 	public static MessageManager messageManager;
-	public static IgnoringManager ignoringManager;
+	public static IgnoreManager ignoreManager;
 	File ignorefile = new File(getDataFolder() + File.separator + "ignore.yml");
 	public static Main getInstance(){
 		return instance;
@@ -37,7 +37,7 @@ public class Main extends JavaPlugin implements CommandExecutor, Listener {
 	
 	public void onEnable() {
 		messageManager = new MessageManager(this);
-		ignoringManager = new IgnoringManager(this);
+		ignoreManager = new IgnoreManager(this);
 		
 		instance = this;
 		

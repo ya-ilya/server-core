@@ -17,7 +17,7 @@ public class Ignore implements CommandExecutor {
 		this.core = core;
 	}
 	
-	public static List<String> ignoring = Main.ignoringManager.getIgnoring();
+	public static List<String> ignoring = Main.ignoreManager.getIgnoring();
 	
 	@SuppressWarnings("deprecation")
 	@Override
@@ -33,25 +33,25 @@ public class Ignore implements CommandExecutor {
 		Player player1 = (Player) sender;
 		if (core.getServer().getOfflinePlayer(args[0]).getPlayer() != null) {
 			Player player2 = core.getServer().getOfflinePlayer(args[0]).getPlayer();
-			if (Main.ignoringManager.get("players." + player1.getName() + ".ignoring") == null) {
-				Main.ignoringManager.clear();
-				Main.ignoringManager.add(player2);
-				Main.ignoringManager.set("players." + player1.getName() + ".ignoring");
-				Main.ignoringManager.saveConfig();
+			if (Main.ignoreManager.get("players." + player1.getName() + ".ignoring") == null) {
+				Main.ignoreManager.clear();
+				Main.ignoreManager.add(player2);
+				Main.ignoreManager.set("players." + player1.getName() + ".ignoring");
+				Main.ignoreManager.saveConfig();
 				sender.sendMessage(ChatColor.GREEN + "You are now ignoring " + player2.getName());
 				return true;
 			}else {
-				ignoring = Main.ignoringManager.getConfig().getStringList("players." + player1.getName() + ".ignoring");
+				ignoring = Main.ignoreManager.getConfig().getStringList("players." + player1.getName() + ".ignoring");
 				if (ignoring.contains(player2.getName())) {
 					ignoring.remove(player2.getName());
-					Main.ignoringManager.set("players." + player1.getName() + ".ignoring", ignoring);
-					Main.ignoringManager.saveConfig();
+					Main.ignoreManager.set("players." + player1.getName() + ".ignoring", ignoring);
+					Main.ignoreManager.saveConfig();
 	                sender.sendMessage(ChatColor.RED + "You are no longer ignoring " + player2.getName());
 	                return true;
 	            }
 				ignoring.add(player2.getName());
-				Main.ignoringManager.set("players." + player1.getName() + ".ignoring", ignoring);
-				Main.ignoringManager.saveConfig();
+				Main.ignoreManager.set("players." + player1.getName() + ".ignoring", ignoring);
+				Main.ignoreManager.saveConfig();
 	            sender.sendMessage(ChatColor.GREEN + "You are now ignoring " + player2.getName());
 	            return true;
 			}
