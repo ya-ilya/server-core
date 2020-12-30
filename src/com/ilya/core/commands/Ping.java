@@ -37,7 +37,6 @@ public class Ping implements CommandExecutor {
 			Player player = (Player) sender;
 			int ping = getPing(player);
 			sender.sendMessage(ChatColor.GOLD + "Your ping is " + ChatColor.GREEN + ping);
-			util.removeIllegals(player.getInventory());
 			return true;
 		}
 	}

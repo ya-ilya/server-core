@@ -23,7 +23,7 @@ public class EventEntityHit implements Listener {
 			if (Main.getInstance().getConfig().getBoolean("antiIllegals.removeIllegalEnchantaments")) {
 				Player d = (Player) event.getDamager();
 				if (event.getDamage() > Main.getInstance().getConfig().getInt("antiIllegals.maxItemDamage")){
-					util.removeIllegals(d.getInventory());
+					util.removeIllegals(d.getInventory(), d);
 					event.setCancelled(true);
 				}
 			}
@@ -36,7 +36,7 @@ public class EventEntityHit implements Listener {
 			if (Main.getInstance().getConfig().getBoolean("antiIllegals.potionSplashEvent")) {
 				Player player = (Player) event.getPotion().getShooter();	
 				if (util.hasIllegalPotionEffect(event.getPotion().getItem())) {
-					util.removeIllegals(player.getInventory());
+					util.removeIllegals(player.getInventory(), player);
 					event.setCancelled(true);	
 				}
 			}
@@ -49,7 +49,7 @@ public class EventEntityHit implements Listener {
 			if (Main.getInstance().getConfig().getBoolean("antiIllegals.bowEvent")) {
 				Player d = (Player) ((Arrow) event.getDamager()).getShooter();
 				if (event.getDamage() > Main.getInstance().getConfig().getInt("antiIllegals.maxBowDamage")) {
-					util.removeIllegals(d.getInventory());
+					util.removeIllegals(d.getInventory(), d);
 					event.setCancelled(true);
 				}
 			}

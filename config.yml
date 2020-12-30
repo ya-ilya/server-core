@@ -2,6 +2,7 @@ discord-invite: "discord.gg/invite"
 joinMessage: "%player% joined the game"
 leftMessage: "%player% left the game"
 antiIllegals:
+   debug: true
    removeIllegalEnchantaments: true
    removeOverStackedItems: true
    removeIllegalPotions: true
