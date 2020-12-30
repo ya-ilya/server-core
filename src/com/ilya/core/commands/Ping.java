@@ -20,6 +20,10 @@ public class Ping implements CommandExecutor {
 	@SuppressWarnings("deprecation")
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+		if (!(sender instanceof Player)) {
+            sender.sendMessage(ChatColor.RED + "Only players can use this command!");
+            return true;
+		}
 		if (args.length > 0) {
 			if (core.getServer().getOfflinePlayer(args[0]) != null) {
 				if (core.getServer().getOfflinePlayer(args[0]).isOnline()) {
