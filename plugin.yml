@@ -16,7 +16,7 @@ commands:
    ignore:
       description: Ignore or unignore other players.
    ignorelist:
-      description: tells you the list of players you ignore
+      description: Tells you the list of players you ignore
    uptime:
       description: Tells you how much time has passed without restarting the server
    ping:
