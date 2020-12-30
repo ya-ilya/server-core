@@ -17,12 +17,14 @@ public class EventPlayerJoinLeave implements Listener {
 	@EventHandler
 	public void onPlayerJoin(PlayerJoinEvent event) {
 		Player p = event.getPlayer();
-		event.setJoinMessage(ChatColor.GRAY + p.getDisplayName() + " joined the game");
+		String joinMessage = Main.getInstance().getConfig().getString("joinMessage").replaceAll("%player%", p.getName());
+		event.setJoinMessage(ChatColor.GRAY + joinMessage);
 	}
 	
 	@EventHandler
 	public void onPlayerQuit(PlayerQuitEvent event) {
         Player p = event.getPlayer();
-        event.setQuitMessage(ChatColor.GRAY + p.getDisplayName() + " left the game");
+        String leftMessage = Main.getInstance().getConfig().getString("leftMessage").replaceAll("%player%", p.getName());
+        event.setQuitMessage(ChatColor.GRAY + leftMessage);
     }
 }

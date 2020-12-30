@@ -1,4 +1,6 @@
-discord-invite: discord.gg/invite
+discord-invite: "discord.gg/invite"
+joinMessage: "%player% joined the game"
+leftMessage: "%player% left the game"
 antiIllegals:
    removeIllegalEnchantaments: true
    removeOverStackedItems: true
