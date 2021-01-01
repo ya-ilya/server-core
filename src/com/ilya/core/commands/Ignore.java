@@ -33,10 +33,10 @@ public class Ignore implements CommandExecutor {
 		Player player1 = (Player) sender;
 		if (core.getServer().getOfflinePlayer(args[0]).getPlayer() != null) {
 			Player player2 = core.getServer().getOfflinePlayer(args[0]).getPlayer();
-			if (Main.ignoreManager.get("players." + player1.getName() + ".ignoring") == null) {
-				Main.ignoreManager.clear();
-				Main.ignoreManager.add(player2);
-				Main.ignoreManager.set("players." + player1.getName() + ".ignoring");
+			if (Main.ignoreManager.getConfig().get("players." + player1.getName() + ".ignoring") == null) {
+				Main.ignoreManager.getIgnoring().clear();
+				Main.ignoreManager.getIgnoring().add(player2.getName());
+				Main.ignoreManager.getConfig().set("players." + player1.getName() + ".ignoring", Main.ignoreManager.getIgnoring());
 				Main.ignoreManager.saveConfig();
 				sender.sendMessage(ChatColor.GREEN + "You are now ignoring " + player2.getName());
 				return true;
@@ -44,13 +44,13 @@ public class Ignore implements CommandExecutor {
 				ignoring = Main.ignoreManager.getConfig().getStringList("players." + player1.getName() + ".ignoring");
 				if (ignoring.contains(player2.getName())) {
 					ignoring.remove(player2.getName());
-					Main.ignoreManager.set("players." + player1.getName() + ".ignoring", ignoring);
+					Main.ignoreManager.getConfig().set("players." + player1.getName() + ".ignoring", ignoring);
 					Main.ignoreManager.saveConfig();
-	                sender.sendMessage(ChatColor.RED + "You are no longer ignoring " + player2.getName());
+	                sender.sendMessage(ChatColor.GREEN + "You are no longer ignoring " + player2.getName());
 	                return true;
 	            }
 				ignoring.add(player2.getName());
-				Main.ignoreManager.set("players." + player1.getName() + ".ignoring", ignoring);
+				Main.ignoreManager.getConfig().set("players." + player1.getName() + ".ignoring", ignoring);
 				Main.ignoreManager.saveConfig();
 	            sender.sendMessage(ChatColor.GREEN + "You are now ignoring " + player2.getName());
 	            return true;
