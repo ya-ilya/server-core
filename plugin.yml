@@ -9,14 +9,14 @@ commands:
       description: Tells you the world size, and the number of players joined on to the server
    message:
       description: Sends a private message to the specified player.
-      aliases: [msg, w, message, tell, t, pm]
+      aliases: [msg, w, tell, t, pm]
    reply:
       description: Quickly reply to the last player to message you.
-      aliases: [r, reply]
+      aliases: [r]
    ignore:
       description: Ignore or unignore other players.
    ignorelist:
-      description: Tells you the list of players you ignore
+      description: tells you the list of players you ignore
    uptime:
       description: Tells you how much time has passed without restarting the server
    ping:
@@ -25,4 +25,7 @@ commands:
       description: Tells you your bed location
    joindate:
       description: Tells you player join date
-      aliases: [joindate, jd]
+      aliases: [jd]
+   kill:
+      description: Kills you
+      aliases: [suicide]

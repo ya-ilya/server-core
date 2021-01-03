@@ -12,6 +12,7 @@ import com.ilya.core.commands.Discord;
 import com.ilya.core.commands.Ignore;
 import com.ilya.core.commands.IgnoreList;
 import com.ilya.core.commands.JoinDate;
+import com.ilya.core.commands.Kill;
 import com.ilya.core.commands.Message;
 import com.ilya.core.commands.Ping;
 import com.ilya.core.commands.Reply;
@@ -63,6 +64,7 @@ public class Main extends JavaPlugin implements CommandExecutor, Listener {
 		getCommand("ping").setExecutor(new Ping(this));
 		getCommand("bed").setExecutor(new Bed(this));
 		getCommand("joindate").setExecutor(new JoinDate(this));
+		getCommand("kill").setExecutor(new Kill(this));
 		
 		new EventPlayerJoinLeave(this);
 		new EventPlayerChat(this);
