@@ -22,10 +22,10 @@ public class JoinDate implements CommandExecutor {
 		if (sender instanceof Player) {
 			if (args.length > 0) {
 				if (core.getServer().getOfflinePlayer(args[0]) != null) {
-					Player m = core.getServer().getOfflinePlayer(args[0]).getPlayer();
+					Player p = core.getServer().getOfflinePlayer(args[0]).getPlayer();
 					try {
-						String joindate = Main.playerManager.getConfig().getString("players." + m.getName() + ".joindate");
-						sender.sendMessage(ChatColor.GOLD + m.getName() + "'s join date: " + ChatColor.GREEN + joindate);
+						String joinDate = Main.playerManager.getJoinDate(p);
+						sender.sendMessage(ChatColor.GOLD + p.getName() + "'s join date: " + ChatColor.GREEN + joinDate);
 					}catch (Exception e) {
 						sender.sendMessage(ChatColor.RED + args[0] + " never joined in to the server");
 						return true;
@@ -33,15 +33,14 @@ public class JoinDate implements CommandExecutor {
 				}else {
 					sender.sendMessage(ChatColor.RED + args[0] + " never joined in to the server");
 				}
-				return true;
 			}else {
 				Player p = (Player) sender;
-				if (Main.playerManager.getConfig().getString("players." + p.getName() + ".joindate") != null) {
-					String joindate = Main.playerManager.getConfig().getString("players." + p.getName() + ".joindate");
-					sender.sendMessage(ChatColor.GOLD + "Your join date: " + ChatColor.GREEN + joindate);
+				if (Main.playerManager.getConfig().getString("players." + p.getName() + ".joinDate") != null) {
+					String joinDate = Main.playerManager.getJoinDate(p);
+					sender.sendMessage(ChatColor.GOLD + "Your join date: " + ChatColor.GREEN + joinDate);
 				}
-				return true;
 			}
+			return true;
 		}
 		return true;
 	}

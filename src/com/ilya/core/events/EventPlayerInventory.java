@@ -14,7 +14,6 @@ import com.ilya.core.util.ContainerUtil;
 @SuppressWarnings("deprecation")
 public class EventPlayerInventory implements Listener {
 	ContainerUtil util = new ContainerUtil();
-	boolean debug = Main.getInstance().getConfig().getBoolean("antiIllegals.debug");
 	
 	public EventPlayerInventory(Main main) {
 		main.getServer().getPluginManager().registerEvents(this, main);

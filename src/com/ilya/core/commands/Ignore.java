@@ -37,9 +37,6 @@ public class Ignore implements CommandExecutor {
 				Main.ignoreManager.getIgnoring().clear();
 				Main.ignoreManager.getIgnoring().add(player2.getName());
 				Main.ignoreManager.getConfig().set("players." + player1.getName() + ".ignoring", Main.ignoreManager.getIgnoring());
-				Main.ignoreManager.saveConfig();
-				sender.sendMessage(ChatColor.GREEN + "You are now ignoring " + player2.getName());
-				return true;
 			}else {
 				ignoring = Main.ignoreManager.getConfig().getStringList("players." + player1.getName() + ".ignoring");
 				if (ignoring.contains(player2.getName())) {
@@ -51,10 +48,10 @@ public class Ignore implements CommandExecutor {
 	            }
 				ignoring.add(player2.getName());
 				Main.ignoreManager.getConfig().set("players." + player1.getName() + ".ignoring", ignoring);
-				Main.ignoreManager.saveConfig();
-	            sender.sendMessage(ChatColor.GREEN + "You are now ignoring " + player2.getName());
-	            return true;
 			}
+			Main.ignoreManager.saveConfig();
+			sender.sendMessage(ChatColor.GREEN + "You are now ignoring " + player2.getName());
+			return true;
 		}else {
 			sender.sendMessage(ChatColor.RED + "Could not find player " + args[0]);
 		}

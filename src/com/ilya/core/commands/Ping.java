@@ -10,7 +10,6 @@ import com.ilya.core.Main;
 import com.ilya.core.util.ContainerUtil;
 
 public class Ping implements CommandExecutor {
-	ContainerUtil util = new ContainerUtil();
 	Main core;
 	
 	public Ping(Main core) {
@@ -30,26 +29,23 @@ public class Ping implements CommandExecutor {
 					Player player = core.getServer().getOfflinePlayer(args[0]).getPlayer();
 					int ping = getPing(player);
 					sender.sendMessage(ChatColor.GOLD + player.getName() + "`s ping is " + ChatColor.GREEN + ping);
-					return true;
 				}else {
 					sender.sendMessage(ChatColor.RED + args[0] + " not online.");
-					return true;
 				}
+				return true;
 			}
-			return true;
 		}else {
 			Player player = (Player) sender;
 			int ping = getPing(player);
 			sender.sendMessage(ChatColor.GOLD + "Your ping is " + ChatColor.GREEN + ping);
-			return true;
 		}
+		return true;
 	}
 	
 	public int getPing(Player player) {
 		try {
 			Object entityPlayer = player.getClass().getMethod("getHandle").invoke(player);
-			int ping = (int) entityPlayer.getClass().getField("ping").get(entityPlayer);
-			return ping;
+			return (int) entityPlayer.getClass().getField("ping").get(entityPlayer);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

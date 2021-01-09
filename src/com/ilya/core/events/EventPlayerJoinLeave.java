@@ -22,6 +22,14 @@ public class EventPlayerJoinLeave implements Listener {
 		Player p = event.getPlayer();
 		String joinMessage = Main.getInstance().getConfig().getString("joinMessage").replaceAll("%player%", p.getName());
 		event.setJoinMessage(ChatColor.GRAY + joinMessage);
+		if (Main.playerManager.getConfig().getString("players." + p.getName() + ".joinDate") != null) {
+
+		}else {
+			SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
+			Date date = new Date(System.currentTimeMillis());
+			Main.playerManager.getConfig().set("players." + p.getName() + ".joinDate", formatter.format(date));
+			Main.playerManager.saveConfig();
+		}
 	}
 	
 	@EventHandler
@@ -29,13 +37,5 @@ public class EventPlayerJoinLeave implements Listener {
         Player p = event.getPlayer();
         String leftMessage = Main.getInstance().getConfig().getString("leftMessage").replaceAll("%player%", p.getName());
         event.setQuitMessage(ChatColor.GRAY + leftMessage);
-        if (Main.playerManager.getConfig().getString("players." + p.getName() + ".joindate") != null) {
-        	
-        }else {
-        	SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
-        	Date date = new Date(System.currentTimeMillis());
-        	Main.playerManager.getConfig().set("players." + p.getName() + ".joindate", formatter.format(date));
-        	Main.playerManager.saveConfig();
-        }
     }
 }

@@ -15,12 +15,12 @@ public class IgnoreManager {
 	FileConfiguration file;
 	
 	public IgnoreManager(Main core) {
-		File ignorefile = new File(core.getDataFolder() + File.separator + "ignore.yml");
-		file = YamlConfiguration.loadConfiguration(ignorefile);;
+		File IgnoreFile = new File(core.getDataFolder() + File.separator + "IgnoreList.yml");
+		file = YamlConfiguration.loadConfiguration(IgnoreFile);
 		this.core = core;
 	}
 	
-	public static List<String> ignoring = new ArrayList<String>();
+	public static List<String> ignoring = new ArrayList<>();
 	
 	
 	public List<String> getIgnoring() {

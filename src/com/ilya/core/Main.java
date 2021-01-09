@@ -33,8 +33,8 @@ public class Main extends JavaPlugin implements CommandExecutor, Listener {
 	public static MessageManager messageManager;
 	public static IgnoreManager ignoreManager;
 	public static PlayerManager playerManager;
-	File ignorefile = new File(getDataFolder() + File.separator + "ignore.yml");
-	File joindatesfile = new File(getDataFolder() + File.separator + "joindates.yml");
+	private final File IgnoreFile = new File(getDataFolder() + File.separator + "IgnoreList.yml");
+	private final File JoinDatesFile = new File(getDataFolder() + File.separator + "JoinDates.yml");
 	public static Main getInstance(){
 		return instance;
 	}
@@ -72,17 +72,17 @@ public class Main extends JavaPlugin implements CommandExecutor, Listener {
 		new EventBlockPlace(this);
 		new EventEntityHit(this);
 		
-		if (!ignorefile.exists()) {
+		if (!IgnoreFile.exists()) {
 			try {
-				ignorefile.createNewFile();
+				IgnoreFile.createNewFile();
 			}catch(IOException e) {
 				e.printStackTrace();
 			}
 		}
 		
-		if (!joindatesfile.exists()) {
+		if (!JoinDatesFile.exists()) {
 			try {
-				joindatesfile.createNewFile();
+				JoinDatesFile.createNewFile();
 			}catch(IOException e) {
 				e.printStackTrace();
 			}
@@ -97,10 +97,10 @@ public class Main extends JavaPlugin implements CommandExecutor, Listener {
 	}
 	
 	public File getIgnoreFile() {
-		return ignorefile;
+		return IgnoreFile;
 	}
 	
 	public File getJoinDatesFile() {
-		return joindatesfile;
+		return JoinDatesFile;
 	}
 }

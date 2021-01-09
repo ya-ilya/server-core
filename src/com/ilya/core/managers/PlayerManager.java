@@ -7,14 +7,15 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import com.ilya.core.Main;
+import org.bukkit.entity.Player;
 
 public class PlayerManager {
 	Main core;
 	FileConfiguration file;
 	
 	public PlayerManager(Main core) {
-		File ignorefile = new File(core.getDataFolder() + File.separator + "joindates.yml");
-		file = YamlConfiguration.loadConfiguration(ignorefile);;
+		File JoinDatesFile = new File(core.getDataFolder() + File.separator + "JoinDates.yml");
+		file = YamlConfiguration.loadConfiguration(JoinDatesFile);
 		this.core = core;
 	}
 	
@@ -28,5 +29,9 @@ public class PlayerManager {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public String getJoinDate(Player player) {
+		return getConfig().getString("players." + player.getName() + ".joinDate");
 	}
 }

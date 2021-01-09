@@ -20,7 +20,7 @@ public class EventEntityHit implements Listener {
 	@EventHandler	
 	public void onDamage(EntityDamageByEntityEvent event) {
 		if (event.getDamager() instanceof Player) {
-			if (Main.getInstance().getConfig().getBoolean("antiIllegals.removeIllegalEnchantaments")) {
+			if (Main.getInstance().getConfig().getBoolean("antiIllegals.removeIllegalEnchantments")) {
 				Player d = (Player) event.getDamager();
 				if (event.getDamage() > Main.getInstance().getConfig().getInt("antiIllegals.maxItemDamage")){
 					util.removeIllegals(d.getInventory(), d);

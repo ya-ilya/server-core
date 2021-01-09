@@ -25,9 +25,9 @@ public class Reply implements CommandExecutor {
 			if (Main.messageManager.getReplyTarget(player1) != null) {
 				Player player2 = Main.messageManager.getReplyTarget(player1);
 				if (core.getServer().getOfflinePlayer(player2.getName()).getPlayer() != null) {
-					String message = "";
+					StringBuilder message = new StringBuilder();
 					for (String s : args) {
-						message += s + " ";
+						message.append(s).append(" ");
 					}
 					sender.sendMessage(ChatColor.LIGHT_PURPLE + "To " + player2.getName() + ": " + message);
 					List<String> ignoring = Main.ignoreManager.getConfig().getStringList("players." + player2.getName() + ".ignoring");
@@ -41,7 +41,7 @@ public class Reply implements CommandExecutor {
 					sender.sendMessage(ChatColor.RED + "Player " + player2.getName() + " is offline!");
 				}
 			}else {
-				sender.sendMessage(ChatColor.RED + "You have recived no whispers this session");
+				sender.sendMessage(ChatColor.RED + "You have received no whispers this session");
 			}
 		}
 		return true;

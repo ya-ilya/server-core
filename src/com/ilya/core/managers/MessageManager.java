@@ -12,7 +12,7 @@ public class MessageManager {
 	public MessageManager(Main core) {
 		this.core = core;
 	}
-	HashMap<Player, Player> players = new HashMap<Player, Player>();
+	HashMap<Player, Player> players = new HashMap<>();
 	
 	public void setReplyTarget(Player player1, Player player2) {
 		players.put(player1, player2);

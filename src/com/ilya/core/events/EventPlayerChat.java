@@ -18,19 +18,18 @@ public class EventPlayerChat implements Listener {
 		main.getServer().getPluginManager().registerEvents(this, main);
 	}
 	
-    public static Set<Player> players = new HashSet<Player>();
+    public static Set<Player> players = new HashSet<>();
     
 	@EventHandler
 	public void onPlayerChat(AsyncPlayerChatEvent event) {
 		Player sender = event.getPlayer();
 		for (Player p : Main.getInstance().getServer().getOnlinePlayers()) {
 			if (Main.ignoreManager.getConfig().getStringList("players." + p.getName() + ".ignoring") == null) continue;
-			List<String> ignorelist = Main.ignoreManager.getConfig().getStringList("players." + p.getName() + ".ignoring");
-			for (int n = 0; n < ignorelist.size(); ++n) {
-                String ignored = ignorelist.get(n);
-                if (!ignored.equalsIgnoreCase(sender.getName())) continue;
-                event.getRecipients().remove(p);
-            }
+			List<String> ignoreList = Main.ignoreManager.getConfig().getStringList("players." + p.getName() + ".ignoring");
+			for (String ignored : ignoreList) {
+				if (!ignored.equalsIgnoreCase(sender.getName())) continue;
+				event.getRecipients().remove(p);
+			}
 		}
 		String message = event.getMessage();
 		if (message.startsWith(">")) {

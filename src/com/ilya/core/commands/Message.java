@@ -25,10 +25,10 @@ public class Message implements CommandExecutor {
 				Player player1 = (Player) sender;
 				Player player2 = core.getServer().getOfflinePlayer(args[0]).getPlayer();
 				Main.messageManager.setReplyTarget(player1, player2);
-				String message = "";
+				StringBuilder message = new StringBuilder();
 				args[0] = "";
 				for (String s : args) {
-					message += s + " ";
+					message.append(s).append(" ");
 				}
 				sender.sendMessage(ChatColor.LIGHT_PURPLE + "To " + player2.getName() + ":" + message);
 				List<String> ignoring = Main.ignoreManager.getConfig().getStringList("players." + player2.getName() + ".ignoring");

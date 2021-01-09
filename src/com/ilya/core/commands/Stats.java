@@ -19,18 +19,18 @@ public class Stats implements CommandExecutor {
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		int players = core.getServer().getOfflinePlayers().length;
-		int worldsize = (int) folderSize(core.getServer().getWorldContainer()) / (1024 * 1024);
-		sender.sendMessage(ChatColor.GOLD + "-----------------------------------------------------\n" + ChatColor.GREEN + "World size - " + worldsize + "MB\n" + "Unique joins - " + players + ChatColor.GOLD + "\n-----------------------------------------------------");
+		int worldSize = (int) folderSize(core.getServer().getWorldContainer()) / (1024 * 1024);
+		sender.sendMessage(ChatColor.GOLD + "-----------------------------------------------------\n" + ChatColor.GREEN + "World size - " + worldSize + "MB\n" + "Unique joins - " + players + ChatColor.GOLD + "\n-----------------------------------------------------");
 		return true;
 	}
 	
 	static long folderSize(File directory) {
 	    long length = 0;
 	    for (File file : directory.listFiles()) {
-	        if (file.isFile())
-	            length += file.length();
-	        else
-	            length += folderSize(file);
+	    	if (file.isFile())
+	    		length += file.length();
+	    	else
+	    		length += folderSize(file);
 	    }
 	    return length;
 	}
