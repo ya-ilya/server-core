@@ -1,8 +1,7 @@
 package me.yailya.servercore;
 
-import me.yailya.servercore.commands.Ignore;
-import me.yailya.servercore.commands.Message;
-import me.yailya.servercore.commands.Stats;
+import me.yailya.servercore.commands.*;
+import me.yailya.servercore.events.*;
 import me.yailya.servercore.managers.IgnoreManager;
 import me.yailya.servercore.managers.MessageManager;
 import org.bukkit.command.CommandExecutor;
