@@ -1,7 +1,8 @@
 package me.yailya.servercore;
 
-import me.yailya.servercore.commands.*;
-import me.yailya.servercore.events.*;
+import me.yailya.servercore.commands.Ignore;
+import me.yailya.servercore.commands.Message;
+import me.yailya.servercore.commands.Stats;
 import me.yailya.servercore.managers.IgnoreManager;
 import me.yailya.servercore.managers.MessageManager;
 import org.bukkit.command.CommandExecutor;
@@ -17,6 +18,14 @@ public class Main extends JavaPlugin implements CommandExecutor, Listener {
     public static IgnoreManager ignoreManager;
     private static Main instance;
     private final File ignoreFile = new File(getDataFolder() + File.separator + "Ignore.yml");
+
+    public static Main getInstance() {
+        return instance;
+    }
+
+    public static void registerListener(Listener listener) {
+        Main.getInstance().getServer().getPluginManager().registerEvents(listener, Main.getInstance());
+    }
 
     @SuppressWarnings("ResultOfMethodCallIgnored")
     public void onEnable() {
@@ -67,13 +76,5 @@ public class Main extends JavaPlugin implements CommandExecutor, Listener {
 
     public File getIgnoreFile() {
         return ignoreFile;
-    }
-
-    public static Main getInstance() {
-        return instance;
-    }
-
-    public static void registerListener(Listener listener) {
-        Main.getInstance().getServer().getPluginManager().registerEvents(listener, Main.getInstance());
     }
 }

@@ -8,6 +8,22 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class Message implements CommandExecutor {
+    public static void sendPrivateMessage(CommandSender sender, Player to, String[] args) {
+        StringBuilder message = new StringBuilder();
+        args[0] = "";
+
+        for (String s : args) {
+            message.append(s).append(" ");
+        }
+
+        if (Main.ignoreManager.getIgnoreList(to.getName()).contains(sender.getName())) {
+            sender.sendMessage(ChatColor.RED + sender.getName() + " ignores you, the message was not delivered");
+        } else {
+            sender.sendMessage(ChatColor.LIGHT_PURPLE + "To " + to.getName() + ":" + message);
+            to.sendMessage(ChatColor.LIGHT_PURPLE + sender.getName() + " whispers:" + message);
+        }
+    }
+
     @SuppressWarnings("deprecation")
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
@@ -31,21 +47,5 @@ public class Message implements CommandExecutor {
         }
 
         return true;
-    }
-
-    public static void sendPrivateMessage(CommandSender sender, Player to, String[] args) {
-        StringBuilder message = new StringBuilder();
-        args[0] = "";
-
-        for (String s : args) {
-            message.append(s).append(" ");
-        }
-
-        if (Main.ignoreManager.getIgnoreList(to.getName()).contains(sender.getName())) {
-            sender.sendMessage(ChatColor.RED + sender.getName() + " ignores you, the message was not delivered");
-        } else {
-            sender.sendMessage(ChatColor.LIGHT_PURPLE + "To " + to.getName() + ":" + message);
-            to.sendMessage(ChatColor.LIGHT_PURPLE + sender.getName() + " whispers:" + message);
-        }
     }
 }

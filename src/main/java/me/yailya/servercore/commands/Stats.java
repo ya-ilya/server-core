@@ -28,9 +28,9 @@ public class Stats implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         sender.sendMessage(
                 ChatColor.GOLD + "-----------------------------------------------------\n" + ChatColor.GREEN
-                + "World size - " + (int) folderSize(Main.getInstance().getServer().getWorldContainer()) / (1024 * 1024) + "MB\n"
-                + "Unique joins - " + Main.getInstance().getServer().getOfflinePlayers().length
-                + ChatColor.GOLD + "\n-----------------------------------------------------"
+                        + "World size - " + (int) folderSize(Main.getInstance().getServer().getWorldContainer()) / (1024 * 1024) + "MB\n"
+                        + "Unique joins - " + Main.getInstance().getServer().getOfflinePlayers().length
+                        + ChatColor.GOLD + "\n-----------------------------------------------------"
         );
 
         return true;
